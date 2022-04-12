@@ -1,4 +1,4 @@
-﻿@.\Python37\python.exe -x "%~f0" & goto :EOF
+@.\Python37\python.exe -x "%~f0" & goto :EOF
 import tkinter as tk
 import tkinter.messagebox
 from Souldveku import Sudoku
@@ -47,13 +47,13 @@ def run():
     question = ','.join([''.join(i) for i in board])
     print(question)
     try:
-        tmp = Sudoku(question)
-        tmp.run()
+        sdk = Sudoku(question)
+        sdk.run()
     except:
         if tk.messagebox.askokcancel(title='No kidding...', message='Please give me a right question.'):
             clear()
     else:
-        [[gridvar[r][c].set(tmp.board[r][c]) for r in range(9)] for c in range(9)]
+        [[gridvar[r][c].set(sdk.board[r][c]) for r in range(9)] for c in range(9)]
 
 
 # UI layout
@@ -75,9 +75,9 @@ a.pack(side='left')
 question_1 = '000670080, 060000047, 705800000, 020041000, 080520004, 907000102, 030005260, 000008470, 602090000'
 question_2 = '300000051, 005008307, 060005800, 000006209, 800090000, 100200000, 018704000, 004050160, 000600002'
 question_3 = '963000000, 000000507, 000438000, 000000802, 050300010, 104000070, 000100720, 706000008, 080020000'
-tk.Button(a, width=9, text='question_1', command=(lambda func=setQuestion: func(question_1))).pack(side='left')
-tk.Button(a, width=9, text='question_2', command=(lambda func=setQuestion: func(question_2))).pack(side='left')
-tk.Button(a, width=9, text='question_3', command=(lambda func=setQuestion: func(question_3))).pack(side='left')
+tk.Button(a, width=9, text='sample_1', command=(lambda func=setQuestion: func(question_1))).pack(side='left')
+tk.Button(a, width=9, text='sample_2', command=(lambda func=setQuestion: func(question_2))).pack(side='left')
+tk.Button(a, width=9, text='sample_3', command=(lambda func=setQuestion: func(question_3))).pack(side='left')
 tk.Button(a, width=5, text='Clear', command=clear).pack(side='left')
 tk.Button(a, width=5, text='Run', command=run).pack(side='left')
 
