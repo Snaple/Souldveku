@@ -1,15 +1,15 @@
 # Souldveku
 
 ### Description:
-Solve sudoku matrix
+A solver for sudoku matrix
 
-Souldveku = Solve + sudoku
+Souldveku = sudoku + solver
 
 ### Usage:
 1.Download this package to your device
 
-2.Just run `ui.py` use python3(please make sure you have python3 interpreter)
+2.Just run `ui.py` via python3 interpreter
 
-3.Input a right sudoku question on ui board
+3.Input a correct sudoku question on board
 
 4.Click button `run`
