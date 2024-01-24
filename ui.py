@@ -20,6 +20,7 @@ def boxClick(var):
 
 
 def setCurrent(n):
+    current_label.config(fg=fg_dict.get(n, 'black'))
     current.set(n)
 
 
@@ -48,7 +49,7 @@ def run():
         s = Solver(question)
         s.start()
     except:
-        if tk.messagebox.askokcancel(title='No kidding...', message='Please give me right question.'):
+        if tk.messagebox.askokcancel(title='No kidding...', message='Please give me a valid question.'):
             clear()
     else:
         [[gridvar[r][c].set(s.board[r][c]) for r in range(9)] for c in range(9)]
@@ -76,7 +77,8 @@ grid = [[tk.Button(frames[row], width=3, textvariable=gridvar[row][col], relief=
                    font=('Helvetica', '12'))
          for col in range(9)] for row in range(9)]
 # show the currently selected number
-tk.Label(textvariable=current).pack(side='top')
+current_label = tk.Label(textvariable=current)
+current_label.pack(side='top')
 # grid layout
 for row in range(9):
     frames[row].pack(side='top')
@@ -99,5 +101,10 @@ tk.Button(a, width=9, text='Sample_2', command=(lambda func=setQuestion: func(qu
 tk.Button(a, width=9, text='Sample_3', command=(lambda func=setQuestion: func(question_3))).pack(side='left')
 tk.Button(a, width=5, text='Clear', command=clear).pack(side='left')
 tk.Button(a, width=5, text='Run', command=run).pack(side='left')
+# bind key 1-9 to set current number
+[window.bind(f'<Key-{i}>', (lambda e, n=i: setCurrent(n))) for i in range(1, 10)]
+# bind <delete> to clear current number
+window.bind('<Delete>', (lambda e: setCurrent('_')))
+
 
 window.mainloop()
